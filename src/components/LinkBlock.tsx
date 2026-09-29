@@ -35,11 +35,11 @@ export function LinkBlock({ link, index }: LinkBlockProps) {
       href={link.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="group flex w-full items-center gap-4 rounded-xl bg-white px-5 py-4 shadow-sm ring-1 ring-gray-200 transition-all duration-200 hover:shadow-md hover:ring-gray-300 active:scale-[0.98]"
+      className="group flex w-full items-center gap-4 rounded-xl bg-white px-5 py-4 shadow-sm ring-1 ring-gray-200 transition-all duration-200 hover:shadow-md hover:ring-[#4FCA6A] active:scale-[0.98]"
       style={{ animationDelay: `${index * 80}ms` }}
     >
-      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-gray-50 group-hover:bg-gray-100">
-        <Icon className="h-5 w-5 text-gray-700" />
+      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#D1FFDB] group-hover:bg-[#4FCA6A] group-hover:text-white">
+        <Icon className="h-5 w-5 text-[#3BA65A] group-hover:text-white" />
       </div>
       <span className="text-sm font-medium text-gray-900">{link.platform}</span>
     </Link>
