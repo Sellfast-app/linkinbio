@@ -1,6 +1,5 @@
 import { MOCK_PROFILE } from "@/lib/mock";
 import { LinkBlock } from "@/components/LinkBlock";
-import Logo from "@/components/svgIcons/Logo";
 
 export default function LandingPage() {
   const profile = MOCK_PROFILE;
@@ -11,7 +10,7 @@ export default function LandingPage() {
         {/* Profile Card */}
         <div className="flex flex-col items-center space-y-3 pb-8">
           <img
-            src="https://i.pravatar.cc/150?img=11"
+            src="https://placehold.co/150x150?text=Profile"
             alt="Vendor avatar"
             className="h-24 w-24 rounded-full object-cover ring-4 ring-[#D1FFDB]"
           />
@@ -31,10 +30,9 @@ export default function LandingPage() {
         </div>
 
         {/* Footer */}
-        <div className="flex items-center justify-center gap-2 pt-8">
-          <Logo />
-          <span className="text-xs text-gray-400">Powered by Swiftree</span>
-        </div>
+        <p className="pt-8 text-center text-xs text-gray-400">
+          Powered by Swiftree
+        </p>
       </div>
     </main>
   );
