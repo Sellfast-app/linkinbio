@@ -1,12 +1,8 @@
-import { Profile, DEFAULT_PROFILE } from '@/lib/types';
-import { LinkBlock } from '@/components/LinkBlock';
+import { MOCK_PROFILE } from "@/lib/mock";
+import { LinkBlock } from "@/components/LinkBlock";
 
-interface LandingPageProps {
-  params: { vendor: string };
-}
-
-export default function LandingPage({ params }: LandingPageProps) {
-  const profile: Profile = DEFAULT_PROFILE;
+export default function LandingPage() {
+  const profile = MOCK_PROFILE;
 
   return (
     <main className="flex min-h-screen items-center justify-center bg-black px-4 py-12">

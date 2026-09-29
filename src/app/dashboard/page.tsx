@@ -1,18 +1,32 @@
 'use client';
 
 import { useState } from 'react';
-import { Plus, Trash2, GripVertical, Globe, MessageCircle, MessageSquare, ShoppingBag } from 'lucide-react';
-import { Profile, LinkItem, DEFAULT_PROFILE } from '@/lib/types';
+import { Plus, Trash2, GripVertical, Globe, MessageCircle, MessageSquare, ShoppingBag, Instagram, Music, Link2 } from 'lucide-react';
+import { Profile, LinkItem } from '@/lib/types';
+import { MOCK_PROFILE } from '@/lib/mock';
 
 const ICON_OPTIONS = [
   { value: 'globe', label: 'Website', icon: Globe },
   { value: 'message-circle', label: 'Web Chat', icon: MessageCircle },
   { value: 'message-square', label: 'WhatsApp', icon: MessageSquare },
   { value: 'shopping_bag', label: 'Shop', icon: ShoppingBag },
+  { value: 'instagram', label: 'Instagram', icon: Instagram },
+  { value: 'music', label: 'TikTok', icon: Music },
+  { value: 'link-2', label: 'Custom Link', icon: Link2 },
+];
+
+const ICON_OPTIONS = [
+  { value: 'globe', label: 'Website', icon: Globe },
+  { value: 'message-circle', label: 'Web Chat', icon: MessageCircle },
+  { value: 'message-square', label: 'WhatsApp', icon: MessageSquare },
+  { value: 'shopping_bag', label: 'Shop', icon: ShoppingBag },
+  { value: 'instagram', label: 'Instagram', icon: Instagram },
+  { value: 'music', label: 'TikTok', icon: Music },
+  { value: 'link-2', label: 'Custom Link', icon: Link2 },
 ];
 
 export default function LinkDashboard() {
-  const [profile, setProfile] = useState<Profile>(DEFAULT_PROFILE);
+  const [profile, setProfile] = useState<Profile>(MOCK_PROFILE);
 
   const updateLink = (id: string, field: keyof LinkItem, value: string | boolean | number) => {
     setProfile((prev) => ({

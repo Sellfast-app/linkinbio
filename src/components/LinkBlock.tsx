@@ -1,13 +1,25 @@
 import Link from 'next/link';
-import { Globe, MessageCircle, MessageSquare, ShoppingBag, Phone } from 'lucide-react';
+import { Globe, MessageCircle, MessageSquare, ShoppingBag, Music, Link2 } from 'lucide-react';
 import { Profile, LinkItem } from '@/lib/types';
+
+function InstagramIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="2" y="2" width="20" height="20" rx="5" />
+      <circle cx="12" cy="12" r="5" />
+      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+    </svg>
+  );
+}
 
 const ICON_MAP: Record<string, React.FC<{ className?: string }>> = {
   globe: Globe,
   'message-circle': MessageCircle,
   'message-square': MessageSquare,
   shopping_bag: ShoppingBag,
-  phone: Phone,
+  instagram: InstagramIcon,
+  music: Music,
+  'link-2': Link2,
 };
 
 interface LinkBlockProps {
