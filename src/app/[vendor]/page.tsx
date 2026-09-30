@@ -10,7 +10,7 @@ export default function LandingPage() {
         {/* Profile Card */}
         <div className="flex flex-col items-center space-y-3 pb-8">
           <img
-            src="https://share.google/o7lTig6jyZlqwPniq"
+            src="/vendor-avatar.jpg"
             alt="Vendor avatar"
             className="h-24 w-24 rounded-full object-cover ring-4 ring-[#D1FFDB]"
           />
