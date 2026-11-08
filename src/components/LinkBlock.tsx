@@ -25,16 +25,40 @@ const ICON_MAP: Record<string, React.FC<{ className?: string }>> = {
 interface LinkBlockProps {
   link: LinkItem;
   index: number;
+  storeId?: string;
 }
 
-export function LinkBlock({ link, index }: LinkBlockProps) {
+export function LinkBlock({ link, index, storeId }: LinkBlockProps) {
   const Icon = ICON_MAP[link.icon] || Globe;
+  const destination = (() => {
+    try {
+      const url = new URL(link.url);
+      const isStorefront = url.hostname === "storefront.swiftree.app" || url.hostname.endsWith(".swiftree.app");
+      if (isStorefront) {
+        url.searchParams.set("utm_source", "swiftree_linkinbio");
+        url.searchParams.set("utm_medium", "profile_link");
+        url.searchParams.set("utm_content", link.id);
+      }
+      return url.toString();
+    } catch {
+      return link.url;
+    }
+  })();
 
   return (
     <Link
-      href={link.url}
+      href={destination}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={() => {
+        const visitorKey = storeId ? `swiftree-linkinbio-visitor:${storeId}` : "";
+        const visitorSessionId = visitorKey ? sessionStorage.getItem(visitorKey) : null;
+        if (storeId) void fetch('/api/events', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ storeId, type: 'linkinbio.click', payload: { link_id: link.id, platform: link.platform, ...(visitorSessionId ? { visitor_session_id: visitorSessionId } : {}) } }),
+        });
+      }}
       className="group flex w-full items-center gap-4 rounded-xl bg-white px-5 py-4 shadow-sm ring-1 ring-gray-200 transition-all duration-200 hover:shadow-md hover:ring-[#4FCA6A] active:scale-[0.98]"
       style={{ animationDelay: `${index * 80}ms` }}
     >
